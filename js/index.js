@@ -86,6 +86,8 @@ window.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('btnSubmit');
   btn.addEventListener('click', function(event) {
     const totalScore = calculateScore(this);
+
+    // get the id of the h2 elemnt and display the score( sorry Elias , i could not style as the output looks ugly)
     
     document.getElementById('output').innerHTML = "Your Total Score is " +  totalScore;
 
@@ -96,6 +98,8 @@ window.addEventListener('DOMContentLoaded', () => {
   // Calculate the score
   
   const calculateScore = () => {
+
+    // initialise the score to zero and increment it only for correct answers
     let score = 0;
 
     quizArray.map((quizItem, index) => {
@@ -103,8 +107,10 @@ window.addEventListener('DOMContentLoaded', () => {
         //highlight the li if it is the correct answer
         let li = `li_${index}_${i}`;
         let r = `radio_${index}_${i}`;
+        // define Variables
         liElement = document.querySelector('#' + li);
         radioElement = document.querySelector('#' + r);
+        // check for correct answers , increment the score and change background colors accordingly
         if (radioElement.checked) {
           if (quizItem.a == i) {
             score++;
