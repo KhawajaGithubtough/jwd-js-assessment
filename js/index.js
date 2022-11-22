@@ -100,7 +100,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     quizArray.map((quizItem, index) => {
       for (let i = 0; i < 6; i++) {
-        //highlight the li if it is the correct answer
+        //highlight the li for the correct answer
         let li = `li_${index}_${i}`;
         let r = `radio_${index}_${i}`;
         liElement = document.querySelector('#' + li);
