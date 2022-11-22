@@ -65,6 +65,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const quizWrap = document.querySelector('#quizWrap');
 
     let quizDisplay = '';
+
     quizArray.map((quizItem, index) => {
       quizDisplay += `<ul class="list-group">
                    Q:${index+1} - ${quizItem.q} 
@@ -72,8 +73,6 @@ window.addEventListener('DOMContentLoaded', () => {
                     <li class="list-group-item" id="li_${index}_1"><input type="radio" name="radio${index}" id="radio_${index}_1"> ${quizItem.o[1]}</li>
                     <li class="list-group-item"  id="li_${index}_2"><input type="radio" name="radio${index}" id="radio_${index}_2"> ${quizItem.o[2]}</li>
                     <li class="list-group-item"  id="li_${index}_3"><input type="radio" name="radio${index}" id="radio_${index}_3"> ${quizItem.o[3]}</li>
-                    <li class="list-group-item"  id="li_${index}_4"><input type="radio" name="radio${index}" id="radio_${index}_4"> ${quizItem.o[4]}</li>
-                    <li class="list-group-item"  id="li_${index}_5"><input type="radio" name="radio${index}" id="radio_${index}_5"> ${quizItem.o[5]}</li>
 
 
                     </ul>
@@ -95,11 +94,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
   // Calculate the score
+  
   const calculateScore = () => {
     let score = 0;
 
     quizArray.map((quizItem, index) => {
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < 4; i++) {
         //highlight the li if it is the correct answer
         let li = `li_${index}_${i}`;
         let r = `radio_${index}_${i}`;
@@ -108,23 +108,18 @@ window.addEventListener('DOMContentLoaded', () => {
         if (radioElement.checked) {
           if (quizItem.a == i) {
             score++;
-            liElement.style.backgroundColor = '#00ff00';
+            liElement.style.backgroundColor = 'green';
           } else {
-            liElement.style.backgroundColor = '#800000';
+            liElement.style.backgroundColor = 'red';
           }
         } else if (quizItem.a == i) {
-          liElement.style.backgroundColor = '#FBCEB1';
-
-          	
+          liElement.style.backgroundColor = 'yellow';
         }
 
-
-        
       }
     });
     return score;
   };
-
   
   // call the displayQuiz function
   displayQuiz();
